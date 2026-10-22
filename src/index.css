@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+/* Bind MiSans Light strictly to English/Latin characters in body text, while Chinese keeps standard PingFang SC / Microsoft YaHei */
+@font-face {
+  font-family: 'MiSansLatinLight';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/MiSans-Light.119.woff2') format('woff2');
+  unicode-range: U+0020-0022, U+0027-002A, U+002C-003B, U+003F, U+0041-004D, U+004F-005D, U+0061-007B, U+007D;
+}
+
+@font-face {
+  font-family: 'MiSansLatinLight';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/MiSans-Light.117.woff2') format('woff2');
+  unicode-range: U+004E;
+}
+
+@font-face {
+  font-family: 'MiSansLatinLight';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/MiSans-Light.118.woff2') format('woff2');
+  unicode-range: U+003E, U+005F, U+007C;
+}
+
+@font-face {
+  font-family: 'MiSansLatinLight';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/MiSans-Light.116.woff2') format('woff2');
+  unicode-range: U+002B, U+0040;
+}
+
+@font-face {
+  font-family: 'MiSansLatinLight';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/MiSans-Light.115.woff2') format('woff2');
+  unicode-range: U+0025;
+}
+
+@layer base {
+  :root {
+    --font-display: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'HarmonyOS Sans SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+    --font-sans: 'MiSansLatinLight', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'HarmonyOS Sans SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+    --font-mono: 'MiSansLatinLight', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'PingFang SC', 'Microsoft YaHei', monospace;
+    --font-hero-serif: 'Songti SC', 'Noto Serif SC', 'Source Han Serif SC', 'STSong', 'SimSun', serif;
+    --font-hero-mono: 'MiSansLatinLight', 'PingFang SC', 'HarmonyOS Sans SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #04060A;
+    color: #F8FAFC;
+    overflow: hidden;
+    user-select: none;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-sans-body {
+  font-family: var(--font-sans);
+}
+
+.font-mono-tabular {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.font-hero-serif {
+  font-family: var(--font-hero-serif);
+}
+
+.font-hero-mono {
+  font-family: var(--font-hero-mono);
+}
+
+/* Pure Hero Block Reveal Wipe & Breathing Prompt */
+@keyframes blockReveal {
+  0% {
+    transform: scale3d(0, 1, 1);
+    transform-origin: left;
+  }
+  50% {
+    transform: scale3d(1, 1, 1);
+    transform-origin: left;
+  }
+  51% {
+    transform: scale3d(1, 1, 1);
+    transform-origin: right;
+  }
+  100% {
+    transform: scale3d(0, 1, 1);
+    transform-origin: right;
+  }
+}
+
+.hero-word-block-animate {
+  animation: blockReveal 1.2s cubic-bezier(0.4, 0.0, 0.2, 1) forwards;
+}
+
+@keyframes promptBreathe {
+  0%, 100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+.hero-prompt-breathe {
+  animation: promptBreathe 2.4s ease-in-out infinite;
+}
+
+/* Custom subtle scrollbars for open-space text flow when needed on small screens */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Pure open-space text legibility shadow (zero borders, zero boxes) */
+.spatial-text-glow {
+  text-shadow: 0 4px 28px rgba(4, 6, 10, 0.95), 0 1px 6px rgba(4, 6, 10, 0.9);
+}
+
+.spatial-title-glow {
+  text-shadow: 0 8px 40px rgba(4, 6, 10, 0.98), 0 0 32px rgba(56, 189, 248, 0.18);
+}
